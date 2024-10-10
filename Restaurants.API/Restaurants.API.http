@@ -1,0 +1,66 @@
+@host= http://localhost
+@port=5028
+@Restaurants.API_HostAddress = https://localhost:7111
+@token= CfDJ8NDX9sJ3r4pOlerKr263g8QcznPg2iZB0NkshAAE-DGTrGQ5_K598dTTzynlhisY8Wn9_1oM1CVE6kZDl0RdUWwKwSSORKOxbWvZymdwpJtHN1z7EGLJMJ3V9x9FRBOBOGusOPdcA_uRjF3u4k-YgrLUxsIR3d9Z3wnIwvx1_f43x64H8ZPrAahgMXYMf3YAcV5CL-pBlggk6ZloqzdBAijB0UDRQ8DGVovSdxLD43alROg0EzeGsl4GmxQ5WPaFK1wyYlFaDFNnxbfZer48IDs-ZKkpoECjTYGY25E-wWLSrZEy2hGDPkLO_lbNuPmN6BFnrruV6HCIQGCbYttLEAbn492TmahFJ-JYlafljxKpMJjAKWlUluhrD7rPdwNX1HLzcAAklWKhpl8se5bkezM-FCcy1cPybKQPHBm7xWGpshcl2j2KpitU37ftwU-QyT5PCTfHD8ehs-t0hCVHFTgcT3a7qpTq_nqQRvDnonzKmLi8VrXdjfmMyjiIP8lVL5semWF9L1SPB2Ahq7C-SUmpNvehSx5Ictw_b_CL-2djdlM8CpsIYvqDnd-wQV_nM8nsIFp7j34MXizCMwN-_FkSDIz-0P74_UBlNOG1Ee0V-i6WcyTankowngoQOW7DEUVNUiAq9dk75hkPL96iRjL0lmXyvx6Y9p_Og0XgLZ5bOnEWTWv7_RQhf90TIwv7T5ODTkMsgka_sFv4wHZ-5uc6qMdi7WvcnSPEkjrlLF2cT0sWdobwIa7_oD9kVC-oUOFAmOChRRqKxkGUYgr6DSBD7anWC7beQVNE2DOVabXs
+###
+
+
+
+
+
+###
+// "password": "P@ssw0rd1"
+POST https://localhost:7111/api/identity/login
+Content-Type: application/json
+
+
+{
+  "email": "owner2@test.com",
+  "password": "P@ssw0rd1"
+}
+###
+
+
+POST {{Restaurants.API_HostAddress}}/api/identity/userRole
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "UserEmail": "owner2@test.com",
+  "RoleName": "Owner"
+}
+
+###
+
+GET {{Restaurants.API_HostAddress}}/api/restaurants
+Authorization: Bearer {{token}}
+
+
+###
+
+POST {{Restaurants.API_HostAddress}}/api/restaurants
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+{
+ "name": "Pizza Palace3",
+  "description": "A popular pizzeria known for its thin-crust pizza.",
+  "category": "Indian",
+  "hasDelivery": true,
+  "contactEmail": "contact@pizzapalace.com",
+  "contactNumber": "555-1234",
+  "city": "London",
+  "street": "123 Main Street",
+  "potCode": "B86 1GY"
+}
+
+###
+
+GET {{Restaurants.API_HostAddress}}/api/restaurants?SearchPharse=Pizza&pageSize=30&pageNumber=1&sortBy=Name&SortDirection=Desceding
+
+###
+
+GET {{Restaurants.API_HostAddress}}/api/restaurants
+
+###
